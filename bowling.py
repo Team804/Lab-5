@@ -27,19 +27,19 @@ class Bowling(object):
                        #throw exception?
                     
                 
-        if first_throw == True:
-            if knocked == 10:
-                self.frame += 1
-                self.strikeArray[self.frame] = True
+            if first_throw == True:
+                if knocked == 10:
+                    self.frame += 1
+                    self.strikeArray[self.frame] = True
+                    check_strike_spare_scoring
+                self.first_throw = False
+                else:
+                if knocked == 10:
+                    self.spareArray[self.frame] = True
                 check_strike_spare_scoring
-            self.first_throw = False
-        else:
-            if knocked == 10:
-                self.spareArray[self.frame] = True
-            check_strike_spare_scoring
-            self.first_throw = True
-            self.frame += 1
-            self.firstFrame = False
+                self.first_throw = True
+                self.frame += 1
+                self.firstFrame = False
 
 
 
