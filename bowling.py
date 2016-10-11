@@ -10,8 +10,8 @@ class Bowling(object):
 
 	def __init__(self):
 		self.score = [0] *10
-                self.spareArray = [0] * 10
-                self.strikeArray = [0] * 10
+                self.spareArray = [False] * 10
+                self.strikeArray = [False] * 10
 		self.first_throw = True
 		self.frame = 0
 
@@ -25,26 +25,27 @@ class Bowling(object):
                 #if check frame score fails at end of frame
                 if check_frame == False:
                        #throw exception?
+                    
                 
         if first_throw == False:
             if knocked == 10:
-                strikeArray[frame] = True
-            firstFrame = False
+                self.strikeArray[self.frame] = True
+            self.firstFrame = False
         else:
             if knocked == 10:
-                spareArray[frame] = True
+                self.spareArray[self.frame] = True
             #strike and spare scoring
-            if frame > 1:
-                 if strikeArray[frame - 1] == True:
-                     self.score[frame - 1] += knocked
-                 if spareArray[frame - 1] == True:
-                     self.score[frame - 1] += knocked
+            if self.frame > 1:
+                 if self.strikeArray[self.frame - 1] == True:
+                     self.score[self.frame - 1] += knocked
+                 if self.spareArray[self.frame - 1] == True:
+                     self.score[self. frame - 1] += knocked
             if frame > 2:
-                if strikeArray[frame - 2] == True:
-                     self.score[frame - 2] += knocked
+                if self.strikeArray[self.frame - 2] == True:
+                     self.score[self.frame - 2] += knocked
             
-            firstFrame = True
-            frame += 1
+            self.firstFrame = True
+            self.frame += 1
 
 
 
