@@ -18,14 +18,14 @@ class BowlingTest(unittest.TestCase):
 		self.bowling.throw(6)
 		self.bowling.throw(2)
 		self.assertEqual(self.bowling.score[0], 8)
-		self.assertFalse(self.bowling.first_throw)
+		self.assertTrue(self.bowling.first_throw)
 		self.assertEqual(self.bowling.frame, 1)
 
 	def test_three_throws(self):
 		self.bowling.throw(5)
 		self.bowling.throw(4)
 		self.assertEqual(self.bowling.score[0], 9)
-		self.assertFalse(self.bowling.first_throw)
+		self.assertTrue(self.bowling.first_throw)
 		self.assertEqual(self.bowling.frame, 1)
 		self.bowling.throw(8)
 		self.assertEqual(self.bowling.score[1], 8)
@@ -36,7 +36,8 @@ class BowlingTest(unittest.TestCase):
 		self.bowling.throw(5)
 		self.assertEqual(self.bowling.frame, 1)
 		self.bowling.throw(7)
-		self.assertEqual(self.bowling.score[0], 17)
+		self.bowling.throw(2)
+		self.assertEqual(self.bowling.score[0], 19)
 		self.assertEqual(self.bowling.score[1], 7)
 
 	def test_strike_moves_to_next_frame(self):
@@ -77,7 +78,7 @@ class BowlingTest(unittest.TestCase):
 		self.bowling.throw(1)
 		self.bowling.throw(9)
 		self.assertEqual(self.bowling.score[9], 10)
-		self.assertFalse(self.bowling.first_throw)
+		self.assertTrue(self.bowling.first_throw)
 		self.assertEqual(self.bowling.frame, 9)
 
 	def test_strike_on_last_frame(self):
@@ -85,7 +86,7 @@ class BowlingTest(unittest.TestCase):
 		self.bowling.throw(10)
 		self.assertEqual(self.bowling.score[9], 10)
 		self.assertFalse(self.bowling.first_throw)
-		self.assertEqual(self.bowling.frame, 9)
+		self.assertEqual(self.bowling.frame, 10)
 
 	def test_throw_on_11th_frame(self):
 		totalExpected = self.throw_to_9th_frame()
@@ -93,8 +94,7 @@ class BowlingTest(unittest.TestCase):
 		self.bowling.throw(5)
 		self.assertEqual(self.bowling.throw(5), -1)
 		self.assertEqual(self.bowling.score[9], 8)
-		self.assertFalse(self.bowling.first_throw)
-		self.assertEqual(self.bowling.frame, 9)
+		self.assertEqual(self.bowling.frame, 10)
 
 
 	def throw_to_9th_frame(self):
